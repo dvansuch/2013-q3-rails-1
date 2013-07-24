@@ -6,7 +6,40 @@
     <th>Systolic</th>
     <th>Diastolic</th>
   </tr>
+  	<% @patients.each  do |patient|  %>
+  	<tr>
+  		<td><%= patient.id %></td>
+  		<% if patient.systolic <= 120 %>
+  		<td>
+  			<span style="color:green"><%= patient.systolic %></span>
+  		</td>
+  		<% elsif patient.systolic > 120 && patient.systolic <= 139 %>
+		<td>
+			<span style="color:yellow"><%= patient.systolic %></span>
+		</td>
+		<% else patient.systolic %>
+		<td>
+			<span style="color:red"><%= patient.systolic %></span>
+		</td>
+		<% end %>
 
-  <!-- TODO: add your ERb here -->
+		<% if patient.diastolic < 79 %> 
+		<td>
+			<span style="color:green"><%= patient.diastolic %></span>
+		</td>
+		<% elsif patient.diastolic >= 80 && patient.diastolic < 89 %> 
+		<td>
+			<span style="color:yellow"><%= patient.diastolic %></span>
+		</td>
+		<% else %>
+		<td>
+			<span style="color:red"><%= patient.diastolic %></span>
+		</td>
+		<% end %>
+		
+   </tr>
+	<% end %>
+
+  
 
 </table>
