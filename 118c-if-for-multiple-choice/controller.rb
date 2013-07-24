@@ -5,13 +5,19 @@ get "/" do
 end
 
 get "/example1" do
-  halt erb(:example1)
+  halt erb(:example)
 end
 
 get "/example2" do
-  halt erb(:example2)
+  @gender = "female"
+  @color = "blue"
+  @donor = false
+  halt erb(:example)
 end
 
 get "/example3" do
-  halt erb(:example3)
+  @gender = "male"
+  @color = "green"
+  @donor = true
+  halt erb(:example)
 end
