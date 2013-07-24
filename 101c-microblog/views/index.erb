@@ -3,7 +3,7 @@
     <h1>Example microblog</h1>
 
     <ul>
-      <% for post in @posts %>
+      <% @posts.each do |post| %>
         <li>
           By <%= post.author %> at <%= post.created_at %>: <%= post.content %>
         </li>
