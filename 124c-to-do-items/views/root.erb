@@ -1,2 +1,7 @@
-<input type="checkbox"> unchecked <br>
-<input type="checkbox" checked="checked"> checked <br>
+<% @todos.each do |todo| %>
+<% if todo.is_completed == false %>
+	<input type="checkbox"><%= todo.description %><br>
+<% else  @todos == true %>
+	<input type="checkbox" checked="checked"><%= todo.description %><br>
+<% end %>
+<% end %>
