@@ -2,15 +2,17 @@
 
 <table border="1">
   <tr>
-    <th>A</th>
-    <th>B</th>
+    <th>Name</th>
+    <th>Grade for 101c</th>
+    <th>Grade for 102c</th>
   </tr>
+   <% @students.each do |student| %>
   <tr>
-    <td>A1</td>
-    <td>A2</td>
-  </tr>
-  <tr>
-    <td>A1</td>
-    <td>A2</td>
+    <td><%= student.first_name %> <%= student.last_name %></td> 
+      <% @exercises.each do |exercise| %>
+    <td>
+      (<%= student.first_name %>'s grade for <%= exercise.directory %>)</td>
+    <% end %>
+    <% end %>
   </tr>
 </table>
