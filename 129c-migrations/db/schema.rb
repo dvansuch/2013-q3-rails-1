@@ -11,6 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130726173518) do
+
+  create_table "ducks", :force => true do |t|
+    t.string  "tag_number"
+    t.integer "wingspan_in_cm"
+    t.date    "date"
+    t.boolean "can_fly"
+  end
 
 end
