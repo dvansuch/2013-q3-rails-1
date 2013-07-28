@@ -6,7 +6,6 @@ get "/" do
 end
 
 get "/cities/:id" do
-  id = params[:id]
-  @city = WorldCity.find(id)
+  @city = WorldCity.find(params[:id])
   halt erb(:show)
 end
