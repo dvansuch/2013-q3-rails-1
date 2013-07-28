@@ -1,3 +1,6 @@
 <h1>World cities</h1>
-
-<!-- TODO: write ERb -->
+<ul>
+	<% cities.each do |city| %>
+		<li><%= city.name %></li>
+	<% end %>
+</ul>
