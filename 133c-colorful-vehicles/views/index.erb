@@ -1,10 +1,22 @@
-<p>Here's one hard-coded table cell to get you started:</p>
+
 <table>
-  <tr>
-    <td style="background-color:#7777FF">
-      <a href="/1/1">
-        <img src="/images/bike.png">
-      </a>
-    </td>
-  </tr>
+	<tr>
+		<th></th>
+		<% @colors.each do |color| %>
+			<th><%= color.name %>
+			<% end %>
+		</th>
+	</tr>
+	<% @vehicles.each do |vehicle| %>
+	<tr>
+		<td><%= vehicle.name %></td>
+	  	<% @colors.each do |color| %>
+	    	<td style="background-color:#<%= color.html_color %>">
+	      		<a href="/<%= color.id %>/<%= vehicle.id %>">
+	        		<img src="/images/<%= vehicle.image %>">
+	      		</a>
+	    	</td>
+	    <% end %>
+	  </tr>
+	<% end %>
 </table>
