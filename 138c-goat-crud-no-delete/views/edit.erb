@@ -1,0 +1,23 @@
+<h1>Edit or Add goat</h1>
+<table>
+	<tr>
+		<td>Name</td>
+		<td><%== text_field_tag :name, @goat.name, size:25 %></td>
+	</tr>
+	<tr>
+		<td>Gender</td>
+		<td><%== text_field_tag :gender, @goat.gender, size:25 %></td>
+	</tr>
+	<tr>
+		<td>100 meter time</td>
+		<td><%== text_field_tag :best_100m_time, @goat.best_100m_time, size:25 %></td>
+	</tr>
+	<tr>
+		<td>Dietary Preference</td>
+		<td><%== text_field_tag :dietary_preference, @goat.dietary_preference, size:25 %></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%== submit_tag "Save" %></td>
+	</tr>
+</table>

@@ -1,0 +1,24 @@
+<htmL>
+	<body>
+		<h1>Your blood pressure</h1>
+		</br>
+		Systolic:<b><%= @systolic %></b> mm Hg
+			<% if @systolic < 120 %>
+				(Normal)
+			<% elsif @systolic >= 140 %> 
+				(High)
+			<% else %>
+				(Borderline High)  
+			<% end %>
+
+</br>
+		Diastolic:<b><%= @diastolic %></b> mm Hg
+			<% if @diastolic < 80 %> 
+				(Normal)
+			<% elsif @diastolic >= 90 %>
+				(High)
+			<% else %>
+				(Borderline High)
+			<% end %>
+	</body>
+</html> 

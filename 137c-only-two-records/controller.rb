@@ -10,10 +10,24 @@ get "/line1" do
   halt erb(:edit)
 end
 
+post "/line1" do
+	bracelet_line 			= BraceletLine.find(1)
+	bracelet_line.font_size = params[:font_size]
+	bracelet_line.text 		= params[:text]
+	bracelet_line.save!
+	redirect "/"
+end
+
 get "/line2" do
   @bracelet_line = BraceletLine.find(2)
   halt erb(:edit)
 end
 
-#Add GET routes for /line1 and /line2 
-#that render ERb to look similar to mockups/2.png.
+
+post "/line2" do
+	bracelet_line 			= BraceletLine.find(2)
+	bracelet_line.font_size = params[:font_size]
+	bracelet_line.text 		= params[:text]
+	bracelet_line.save!
+	redirect "/"
+end

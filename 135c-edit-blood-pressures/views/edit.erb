@@ -1,0 +1,11 @@
+<h1>Edit patient #<%= @patient.id %></h1>
+
+<p>Systolic</br>
+	<%== text_field_tag :systolic, "", size: 40 %>
+</p>
+
+<p>Diastolic </br>
+	<%== text_field_tag :diastolic, "", size: 40 %>
+</p>
+
+<p><%== submit_tag "Update" %></p>
