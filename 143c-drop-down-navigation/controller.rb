@@ -5,7 +5,13 @@ get "/" do
 end
 
 post "/" do
-  # TODO: write this part
+  if params[:pages] == "1"
+    redirect "/page1"
+  elsif params[:pages] == "2"
+    redirect "/page2"
+  else
+    redirect "/"
+  end
 end
 
 get "/page1" do
