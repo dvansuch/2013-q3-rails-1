@@ -5,6 +5,8 @@ get "/" do
 end
 
 get "/1" do
+  @page = "1"
+  @question = "What is 8+5?"
   @answer1 = "14"
   @answer2 = "40"
   @answer3 = "13"
@@ -20,10 +22,12 @@ post "/1" do
 end
 
 get "/2" do
+  @page = "2"
+  @question = "What is 5-3?"
   @answer1 = "2"
   @answer2 = "3"
   @answer3 = "8"
-  halt erb(:question2)
+  halt erb(:question1)
 end
 
 post "/2" do
