@@ -5,6 +5,6 @@ get "/" do
   halt erb(:root)
 end
 
-post "/" do
-  raise params.inspect
+post "/:id" do
+  @user = Occupations.find(params[:id])
 end

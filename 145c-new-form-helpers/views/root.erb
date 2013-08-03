@@ -6,8 +6,32 @@ Biography<br>
 <%== text_area_tag :biography, "As a young boy, Abe lived in a log cabin." %>
 <hr>
 
-<!-- TODO: fill out this part -->
+Deceased<br>
 
+<%== check_box_tag :is_deceased, "on", true %>
+
+<hr>
+
+Party<br>
+<%== radio_button_tag :party, "on", true %>Democrat
+<%== radio_button_tag :party, "on", false %>Republican
+<%== radio_button_tag :party, "on", false %>Whig
+<hr>
+
+Highest Office held<br>
+<%== select_tag :office, 
+	options_for_select([
+		["President", 			"pres"],
+		["Vice President", 		"vice"],
+		["Secretary of state", 	"sect"]
+		], ""),
+		prompt: "Choose an occupation" %>
+<hr>
+Occupation<br>
+	<%== select_tag :occupation, 
+	options_from_collection_for_select(
+		@occupations, :id, :occupation, 1), 
+	prompt: "Choose an occupation" %>
 <hr>
 
 <%== submit_tag "Revise history" %>

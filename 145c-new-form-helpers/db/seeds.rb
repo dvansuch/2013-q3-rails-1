@@ -1,4 +1,4 @@
-Occupation.create(name: "lawyer")
-Occupation.create(name: "farmer")
-Occupation.create(name: "soldier")
-Occupation.create(name: "sailor")
+Occupation.create(occupation: "lawyer")
+Occupation.create(occupation: "farmer")
+Occupation.create(occupation: "soldier")
+Occupation.create(occupation: "sailor")

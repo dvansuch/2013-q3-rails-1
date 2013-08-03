@@ -14,7 +14,12 @@
 ActiveRecord::Schema.define(:version => 20130802035821) do
 
   create_table "occupations", :force => true do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "biography"
+    t.string "is_deceased"
+    t.string "party"
+    t.string "office"
+    t.string "occupation"
   end
 
 end
