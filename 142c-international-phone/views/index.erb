@@ -8,7 +8,23 @@
     <th>Type</th>
   </tr>
   <% @phones.each do |phone| %>
-
+  	<tr>
+  		<td>
+  			<%= phone.id %>
+  		</td>
+  		<td>
+  			<%= phone.country_code %>
+  		</td>
+  		<td>
+  			<%= phone.number %>
+  		</td>
+  		<td>
+  			<%= phone.phone_type %>
+  		</td>
+  		<td>
+  			<a href="<%= phone.id %>">Edit </a>
+  		</td>
+  	</tr>
 
     <!-- TODO: Write this part -->
 

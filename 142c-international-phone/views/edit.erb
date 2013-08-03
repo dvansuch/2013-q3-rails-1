@@ -1,3 +1,33 @@
 <h1>Edit phone number</h1>
-
-<!-- TODO: Write this part -->
+<p>
+Phone type:<br>
+	<%==radio_button_tag :phone_type, 
+		"Home", @phone.phone_type =="H" %>
+	Home
+	<%==radio_button_tag :phone_type, 
+		"Cellular", @phone.phone_type =="C" %>
+	Cellular
+	<%==radio_button_tag :phone_type, 
+		"Work", @phone.phone_type =="W" %>
+	Work
+</p>
+<p>
+Phone number:<br>
+	<%== text_field_tag :number, @phone.number, size: 25 %><br>
+</p>
+<p>
+Country Code:<br>
+	<%== select_tag :country_code, 
+	options_for_select([
+		["United States", "US"],
+		["Australia", "AU"],
+		["India", "IN"]
+	], @phone.country_code), 
+	prompt: "Choose a country..." %>
+</p>
+<p>
+	Has voice mail:<br>
+		<%== check_box_tag :has_voice_mail, 
+		"on", @phone.has_voice_mail %>
+</p>
+<%== submit_tag "Update" %>
