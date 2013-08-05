@@ -1,5 +1,14 @@
 <h1>Login</h1>
-
-<!-- TODO: write this part -->
-
+<% if @error %>
+	ERROR: <%= @error %>
+<% end %>
+<p>
+	Username<br>
+	<%== text_field_tag :username, @old_username %>
+</p>
+<p>
+	Password<br>
+	<%== text_field_tag :password, "" %>
+</p>
+<p><%== submit_tag "Login" %>
 <p>(Username is amy, password is 123)</p>
