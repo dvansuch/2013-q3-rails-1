@@ -15,11 +15,16 @@
 <p>
   Password
   <br>
-  <%== password_field_tag :password, "" %>
+  <%== password_field_tag :password, @old_password %>
 </p>
+
+<p><%== check_box_tag :guest_login, 
+	@guest_login %>Login as guest</p>
 
 <p>
   <%== submit_tag "Login" %>
 </p>
 
 <p>(Username is amy, password is 123)</p>
+
+
