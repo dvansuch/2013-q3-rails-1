@@ -11,7 +11,37 @@
     <th>Is dependent</th>
     <th></th>
   </tr>
-
-  <!-- TODO: write this part -->
+  <% @persons.each do |person| %>
+  <tr>
+    <th><%= person.id %></th>
+    <th><%= person.relation_to_filer %></th>
+    <th><%= person.first_name %></th>
+    <th><%= person.last_name %></th>
+    <th><%= person.date_of_birth %></th>
+    <th><%= person.gender %></th>
+    <th><%= person.is_dependent %></th>
+    <th></th>
+  </tr>
+    <% end %>
+  <tr>
+    <th></th>
+    <th>
+      <%== select_tag :relation_to_filer, 
+        options_for_select([
+          ["self" ,         "self"],
+          ["family member", "family"],
+          ["other",         "other"]
+        ], ""),
+      prompt: "Choose a relation..." %>
+    </th>
+    <th><%== text_field_tag :first_name %> </th>
+    <th><%== text_field_tag :last_name %></th>
+    <th><%== text_field_tag :date_of_birth %></th>
+    <th><%== radio_button_tag :gender, "male" %>Male
+      <%== radio_button_tag :gender, "female" %>Female
+    </th>
+    <th><%== check_box_tag :is_dependent, "on" %> </th>
+    <th><%== submit_tag "Add" %></th>
+  </tr>
 
 </table>
