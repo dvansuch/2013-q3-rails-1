@@ -1,3 +1,22 @@
 <h1>Page of 3 of 4: Billing</h1>
-
-<!-- TODO: write this -->
+<p>
+	<h3>Enter billing address</h3>
+</p>
+<p>
+	<%== check_box_tag :bill_address_same_as_ship, @customer.bill_address_same_as_ship %> Same as shipping address<br>
+</p>
+<p>Adress1<br>
+	<%== text_field_tag :bill_address1, @customer.bill_address1 %><br>
+	City <br>
+	<%== text_field_tag :bill_city, @customer.bill_city %><br>
+	State <br>
+	<%== select_tag :bill_state, 
+		options_from_collection_for_select(
+		@u_s_states, :abbreviation, :name, @customer.bill_state),
+	prompt: "Choose state..." %><br>
+	Zip code<br>
+	<%== text_field_tag :bill_zip_code, @customer.bill_zip_code %>
+</p>
+<p>
+	<%== submit_tag "Go Back" %> or <%== submit_tag "Continue" %>
+</p>

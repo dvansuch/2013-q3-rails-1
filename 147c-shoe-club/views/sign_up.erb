@@ -1,3 +1,13 @@
 <h1>Page 1 of 4: Sign up</h1>
+<p>
+	<h3>First Name</h3>
+	<%== text_field_tag :first_name, @customer.first_name %>
+</p>
+<p>
+	<h3>Last Name</h3>
+	<%== text_field_tag :last_name, @customer.last_name %>
+</p>
+<p>
+	<%== submit_tag "Go Back" %> or <%== submit_tag "Continue" %>
+</p>
 
-<!-- TODO: write this -->

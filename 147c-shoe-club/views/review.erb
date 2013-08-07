@@ -1,3 +1,23 @@
 <h1>Page 4 of 4: Review</h1>
+<p>
+	<h3>Name</h3>
+	<%= @customer.first_name %> <%= @customer.last_name %>
+</p>
+<p>
+	<h3>Shipping Speed</h3>
+	<%= @customer.ship_speed %>
+</p>
+<p>
+	<h3>Shipping address</h3>
+	<%= @customer.ship_address1 %><br>
+	<%= @customer.ship_city %>, <%= @customer.ship_state %> <%= @customer.ship_zip_code %>
 
-<!-- TODO: Write this -->
+</p>
+<p>
+	<h3>Billing address</h3>
+	<%= @customer.bill_address1 %><br>
+	<%= @customer.bill_city %>, <%= @customer.bill_state %> <%= @customer.bill_zip_code %>
+</p>
+<p>
+	<%== submit_tag "Go Back" %> or <%== submit_tag "Start Over" %> or <%== submit_tag "Place Order" %>
+</p>
