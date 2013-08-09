@@ -72,11 +72,13 @@ post "/billing" do
     redirect "/shipping"
   elsif params[:commit] == "Continue"
     if params[:bill_address_same_as_ship] == "on" 
+      @customer.bill_address_same_as_ship == true
       @customer.bill_address1 = @customer.ship_address1
       @customer.bill_city = @customer.ship_city
       @customer.bill_state = @customer.ship_state
       @customer.bill_zip_code = @customer.ship_zip_code
     else 
+      @customer.bill_address_same_as_ship == false
       @customer.bill_address1 = params[:bill_address1]
       @customer.bill_city = params[:bill_city]
       @customer.bill_state = params[:bill_state]
