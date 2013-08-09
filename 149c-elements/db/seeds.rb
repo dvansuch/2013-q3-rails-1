@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Element.create(
                      name: "Hydrogen",
                    symbol: "H",

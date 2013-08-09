@@ -1,34 +1,41 @@
 <p>1. Print out the names of the atomic elements in alphabetical order.</p>
-
-<!-- TODO: write the answer here -->
+<p><%= Element.order(:name).all %></p>
 
 <p>2. Print out the name for the element with number of 27.</p>
 
-<!-- TODO: write the answer here -->
+<p><%= Element.where(number: "27").all %></p>
 
 <p>3. Print the name of the element with the lowest melting point.</p>
 
-<!-- TODO: write the answer here -->
+<p><%= Element.order(:melting_point).first.name %></p>
 
 <p>4. Print the name of the element with the highest melting point. Hint: you'll need to filter out the NULL records with <code>where("melting_point is not null")</code>.</p>
 
-<!-- TODO: write the answer here -->
+<%= Element.where("melting_point is not null").order("melting_point desc").first.name %>
 
 <p>5. Print out all the element names that end with the letters ium.  (e.g. Calcium)</p>
 
-<!-- TODO: write the answer here -->
+<p><% Element.where("name like ?", "%ium").each do |element| %>
+    <%= element.name %>
+  <% end %></p>
 
 <p>6. Print out the name and number for each of the noble gases.  Look in the <code>category</code> field to find the noble gases.</p>
 
-<!-- TODO: write the answer here -->
+<p><% Element.where(category: "noble gases").each do |element| %>
+<%= element.name %> <%= element.number %>
+<% end %></p>
 
 <p>7. Print out the symbols for the alkali metals, sorted alphabetically.  Look in the <code>category</code> field to find the alkali metals.</p>
 
-<!-- TODO: write the answer here -->
+<p><% Element.where(category: "alkali metals").each do |element| %>
+<%= element.symbol %>
+<% end %></p>
 
 <p>8. Print out element names with atomic number of 10 or below.  Example less-than method call: <code>where("year < 1998")</code></p>
 
-<!-- TODO: write the answer here -->
+<p><% Element.where("atomic_number <= 10").each do |element| %>
+<%= element.name %>
+<% end %></p>
 
 <p>9. After the user enters a name of an element in the text box below and clicks Find, print the number of the element on the resulting POST page.</p>
 
