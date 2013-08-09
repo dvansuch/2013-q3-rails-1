@@ -1,7 +1,16 @@
-<!-- TODO: write this part -->
+<% if @error != nil %>
+	ERROR: <%= @error %>
+<% end %>
 
 <h1>Please login</h1>
-
-<!-- TODO: write this part -->
+<p>
+	Username<br>
+	<%== text_field_tag :username, @old_username %>
+</p>
+<p>
+	Password<br>
+	<%== text_field_tag :password, "" %>
+</p>
+<%== submit_tag "Login" %>
 
 <p>(Note: username/password is abe/123 or amy/456)</p>
