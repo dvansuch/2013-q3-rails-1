@@ -6,23 +6,12 @@ get "/" do
 end
 
 post "/" do
-  if params[:new_name_1] != ""
-    new_person = Person.new
-    new_person.name = params[:new_name_1]
-    new_person.save!
+  [1, 2, 3].each do |num|
+    if params["new_name_#{num}"] != ""
+      new_person = Person.new
+      new_person.name = params["new_name_#{num}"]
+      new_person.save!
+    end
   end
-
-  if params[:new_name_2] != ""
-    new_person = Person.new
-    new_person.name = params[:new_name_2]
-    new_person.save!
-  end
-
-  if params[:new_name_3] != ""
-    new_person = Person.new
-    new_person.name = params[:new_name_3]
-    new_person.save!
-  end
-
   redirect "/"
 end

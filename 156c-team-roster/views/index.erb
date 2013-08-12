@@ -5,17 +5,10 @@
     <li><%= person.name %></li>
   <% end %>
 
-  <li>
-    <%== text_field_tag :new_name_1, "" %>
-  </li>
-
-  <li>
-    <%== text_field_tag :new_name_2, "" %>
-  </li>
-
-  <li>
-    <%== text_field_tag :new_name_3, "" %>
-  </li>
+    <li>
+      <%== text_field_tag "new_name_#{num}", "" %>
+    </li>
+  <% end %>
 </ul>
 
 <%== submit_tag "Add" %>
