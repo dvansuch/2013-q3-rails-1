@@ -1,0 +1,13 @@
+<h2>Teams</h2>
+<% if @error %>
+<p><b><%= @error %></b></p>
+<% end %>
+
+<ul>
+	<% @team.each do |team| %>
+	  <li><a href="/team/<%= team.color %>"><%= team.color %></a></li>
+    <% end %>
+	<li>Add a new color:<%== text_field_tag :new_team_color, @new_team %><%== submit_tag "Add" %></li>
+</ul>
+
+<p>Click a team to view its team members</p>
