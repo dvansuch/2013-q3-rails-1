@@ -5,6 +5,13 @@ get "/" do
 end
 
 get "/login" do 
+  @username = params[:username]
+  halt erb(:login)
+end
+
+post "/login" do
+  @username = params[:username]
+#  redirect "/reservations/1"
   halt erb(:login)
 end
 
