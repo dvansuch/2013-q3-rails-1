@@ -1,3 +1,9 @@
 require '../dvc-sinatra.rb'
 
-# TODO: write GET and POST handlers
+get "/" do
+	halt erb(:index)
+end
+
+get "/team/:color" do
+	
+end
