@@ -1,4 +1,7 @@
-<h2>Team </h2>
+<h2>Team <%= @color.color %></h2>
 <ul>
-	<li>Add a new color:<%== text_field_tag :new_team_member %><%== submit_tag "Add" %></li>
+	<% @members.each do |member| %>
+	<li><%= member.name %></li>
+	<% end %>
+	<li>Add a new team member:<%== text_field_tag :new_team_member %><%== submit_tag "Add" %></li>
 </ul>
