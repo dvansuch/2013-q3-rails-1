@@ -12,6 +12,9 @@ get "/recipe/:name" do
 end
 
 get "/by-author/:name" do
+
+	@recipes = Recipe.where(name: params[:name]).all
+	@title = "Recipes by #{Author.find(recipe.author_id).full_name}"
   # TODO: assign to @recipes the recipes for this author
   # TODO: assign to @title "Recipes by _____"
   halt erb(:index)
