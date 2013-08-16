@@ -13,14 +13,14 @@ post "/login" do
 	ent_username = params[:username]
 	ent_password = params[:password]
 
-	member = Member.where(username: ent_username).first
-	if member == nil
+	@member = Member.where(username: ent_username).first
+	if @member == nil
 		@error = "Error: Unknown username"
 		halt erb(:login)
-	elsif ent_username == member.username
-		if ent_password == member.password
-			redirect "/reservations/#{member.id}"
-		else ent_password != member.password
+	elsif ent_username == @member.username
+		if ent_password == @member.password
+			redirect "/reservations/#{@member.id}"
+		else ent_password != @member.password
 			@error = "Error: Unknown password"
 			halt erb(:login)
 		end
@@ -29,12 +29,15 @@ end
 
 get "/reservations/:id" do
 	member_id = params[:id]
-	member = Member.where(username: member_id).first	
-	car = Car.all
+	@member = Member.find(member_id)	
+	@car = Car.where(reserving_member_id: @member.id).all
   halt erb(:reservations)
 end
 
 post "/reservations/:id" do
+	member_id = params[:id]
+	@member = Member.find(member_id)
+
 	if params[:commit] == "Logout"
 		redirect "/login"
 	end
