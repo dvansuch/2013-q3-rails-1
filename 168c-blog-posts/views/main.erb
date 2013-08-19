@@ -15,7 +15,7 @@
     <tr>
       <td><%= post.id %></td>
       <td><%= post.title %></td>
-      <td>TODO</td>
+      <td><%= post.author.name %></td>
     </tr>
   <% end %>
 </table>
@@ -34,7 +34,9 @@
       <td><%= author.name %></td>
       <td>
         <ul>
-          <li>TODO</li>
+          <% author.blog_posts.each do |post| %>
+          <li><%= post.title %></li>
+          <% end %>
         </ul>
       </td>
     </tr>
