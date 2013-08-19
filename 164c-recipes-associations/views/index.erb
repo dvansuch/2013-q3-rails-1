@@ -13,8 +13,8 @@
         </a>
       </td>
       <td>
-        <a href="/by-author/<%= Author.find(recipe.author_id).full_name %>">
-          <%= Author.find(recipe.author_id).full_name %>
+        <a href="/by-author/<%= recipe.author.full_name %>">
+          <%= recipe.author.full_name %>
         </a>
       </td>
     </tr>
