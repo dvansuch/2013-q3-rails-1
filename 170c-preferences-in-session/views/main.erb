@@ -1,10 +1,20 @@
-<!-- TODO #1: create the view based on the mockup -->
-<!-- TODO #4: prefill the input elements based on instance variables -->
-
-<p>
-  <%== submit_tag "Update preferences" %>
+<p>Favorite Color<br>
+	<%== select_tag :color, options_for_select([
+		["green", "green"], 
+		["red", "red"], 
+		["yellow", "yellow"]
+		]), 
+	prompt: "" %>
 </p>
-
-<p>
-  <a href="/logout">Logout</a>
+<p>Favorite letter<br>
+	<%== radio_button_tag :letter, "A" %>A 
+	<%== radio_button_tag :letter, "B" %>B 
+	<%== radio_button_tag :letter, "C" %>C
 </p>
+<p>Favorite number<br>
+	<%== text_field_tag :number %>
+</p>
+<p>
+	<%== submit_tag "Update preferences" %>
+</p>
+<p><a href= "/logout">Logout</a>
