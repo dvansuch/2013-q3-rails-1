@@ -40,45 +40,46 @@ get "/logout" do
   redirect "/login"
 end
 
-get "/accounts/:type" do
+get "/accounts/:type" do 
+  type = params[:type]
+  @account = Account.where(account_type: type).first
   @user = User.where(id: session[:user_id]).first
-  @account = Account.where(user_id: @user.id, account_type: params[:type]).first
   halt erb(:transactions)
 end
 
-post "/accounts/:type" do
+post "/accounts/:type" do 
+  type = params[:type]
+  @account = Account.where(account_type: type).first
   @user = User.where(id: session[:user_id]).first
-  @account = Account.where(id: @user.id, account_type: params[:type]).first
+  current_balance = 0.0
 
-  balance = BigDecimal(0)
+  @account.transactions.each do |transaction|
+    transaction.date = params["date#{transaction.id}"]
+    transaction.memo = params["memo#{transaction.id}"]
+    transaction.amount = params["amount#{transaction.id}"]
+    transaction.save!
+    
+    current_balance = current_balance + transaction.amount
 
-  @account.transactions.each do |txn|
-    txn.date   = params["date_#{txn.id}"]
-    txn.memo   = params["memo_#{txn.id}"]
-    txn.amount = params["amount_#{txn.id}"]
-    txn.save!
-
-    balance = balance + txn.amount
-
-    if params[:commit] == "Delete transaction #{txn.id}"
-      txn.destroy
-      balance = balance - txn.amount
+    if params[:commit] == "Delete transaction #{transaction.id}"
+      transaction.destroy
+      current_balance = current_balance - transaction.amount
     end
   end
 
-  if params["date_new"] != ""
-    txn = Transaction.new
-    txn.account_id = @account.id
-    txn.date       = params["date_new"]
-    txn.memo       = params["memo_new"]
-    txn.amount     = params["amount_new"]
-    txn.save!
+  if params[:new_date && :new_memo && :new_amount] != "" 
+    new_transaction = Transaction.new
+    new_transaction.date = params[:new_date]
+    new_transaction.memo = params[:new_memo]
+    new_transaction.amount = params[:new_amount]
+    new_transaction.account_id = @account.id
+    new_transaction.save!
 
-    balance = balance + txn.amount
+    current_balance = current_balance + transaction.amount
   end
 
-  @account.current_balance = balance
+  @account.current_balance = current_balance
   @account.save!
 
-  redirect "/accounts/#{@account.account_type}"
+  redirect "/accounts/#{type}"
 end
