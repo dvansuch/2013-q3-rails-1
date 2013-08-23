@@ -8,6 +8,12 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/application.css">
   </head>
   <body>
+    <% if flash.has?(:success) %>
+      <div class="flash-success">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+
     <% if flash.has?(:error) %>
       <div class="flash-error">
         <%= flash[:error] %>
