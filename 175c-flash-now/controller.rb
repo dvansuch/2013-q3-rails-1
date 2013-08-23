@@ -12,10 +12,10 @@ post "/login" do
   named_user = User.where(username: params[:username]).first
 
   if named_user == nil 
-    # TODO: show the user the message "Unknown username"
+    flash.now[:error] = "Wrong username"
     halt erb(:login)
   elsif named_user.authenticate(params[:password]) == false
-    # TODO: show the user the message "Wrong password"
+    flash.now[:error] = "Wrong password"
     halt erb(:login)
   else
     session[:user_id] = named_user.id
