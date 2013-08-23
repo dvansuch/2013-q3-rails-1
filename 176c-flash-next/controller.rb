@@ -12,12 +12,15 @@ post "/login" do
   named_user = User.where(username: params[:username]).first
 
   if named_user == nil 
-    # TODO: Redirect to /login with message "Unknown username"
+    flash.now[:error] = "Wrong username"
+    halt erb(:login)
   elsif named_user.authenticate(params[:password]) == false
-    # TODO: Redirect to /login with message "Wrong password"
+    flash.now[:error] = "Wrong password"
+    halt erb(:login)
   else
     session[:user_id] = named_user.id
-    # TODO: Redirect to /welcome with message "You have successfully logged in"
+    flash[:success] = "You have successfully logged in"
+    redirect "/welcome"
   end
 end
 
@@ -28,5 +31,6 @@ end
 
 get "/logout" do
   session.clear
-  # TODO: Redirect to /login with message "You have successfully logged out"
+  flash[:logout] = "You have successfully logged out"
+  redirect "/login"
 end
