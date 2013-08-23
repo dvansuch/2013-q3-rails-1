@@ -1,1 +1,25 @@
-<!-- TODO: write this -->
+<p>You are logged in as <%= @person.name %>
+	<a href = "/logout">Logout</a>
+</p>
+<h1>Who I follow</h1>
+<p>
+	<ul>
+		<% @person.followings.each do |follower| %>
+			<li><%= follower.to_person.name %>
+		<% end %>
+		<li>someone new: 
+			<%== select_tag :new_following, 
+				options_from_collection_for_select(
+				Person.order(:name).where("id != ?", @person).all, :name, :name), prompt: "Choose username" %>
+			<%== submit_tag "Follow" %>
+	</ul>
+</p>
+
+<h1>My Followers</h1>
+<p>
+	<ul>
+		<% @person.followers.each do |follower| %>
+			<li><%= follower.from_person.name %>
+		<% end %>
+	</ul>
+</p>

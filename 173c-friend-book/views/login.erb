@@ -1,1 +1,17 @@
-<!-- TODO: write this -->
+<% if @error %>
+	<%= @error %>
+<% end %>
+
+<h1> Login to FriendBook </h1>
+<p>Choose your name<br>
+	<%== select_tag :name, 
+	options_from_collection_for_select(
+		Person.all, :name, :name), 
+	prompt: "Choose username" %>
+</p>
+<p>Password:<br>
+	<%== password_field_tag :password %>
+</p>
+<%== submit_tag "Login" %>
+<p>(Password is the first letter of the name, capitalized)
+</p>

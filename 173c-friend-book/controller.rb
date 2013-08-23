@@ -9,15 +9,40 @@ get "/login" do
 end
 
 post "/login" do
-  # TODO: write this
+	@username = params[:name]
+	@password = params[:password]
+	person = Person.where(name: @username).first
+
+	if @username == ""
+		@error = "Please choose a username"
+		halt erb(:login)
+	elsif person.authenticate(@password) == false
+		@error = "Incorrect password"
+		halt erb(:login)
+	else
+		session[:person_id] = person.id
+		redirect "/followers"
+	end
 end
 
 get "/followers" do
-  # TODO: write this
+	@person = Person.find(session[:person_id])
+  halt erb(:followers)
 end
 
 post "/followers" do
-  # TODO: write this
+	@person = Person.find(session[:person_id])
+
+	if params[:commit] == "Follow"
+		name = params[:new_following]
+		@following = Person.where(name: name).first
+
+		new_following = Following.new
+		new_following.to_person_id = @person.id
+		new_following.from_person_id = @following.id
+		new_following.save!
+	end
+	redirect "/followers"
 end
 
 get "/logout" do
