@@ -1,1 +1,40 @@
-<!-- TODO: write this -->
+
+<h1>Order <%= @order.id %> for Table <%= @order.table_id %></h1>
+
+<table border ="1">
+	<tr>
+		<td>Chair #</td>
+		<td>Entree</td>
+		<td>Price</td>
+	</tr>
+	<% @order.order_lines.each do |orderline| %>
+		<tr>
+			<td><%= orderline.chair_number %></td>
+			<td><%= orderline.entree.name %></td>
+			<td><%= orderline.entree.price %></td>
+		</tr>
+	<% end %>
+	<tr>
+		<td></td>
+		<td align ="right">Total</td>
+		<td><%= @order.total_price %><%== submit_tag "Pay and Close" %>
+		</td>
+	</tr>
+</table>
+
+<h1>Add Entree to Order</h1>
+<p>Menu Item:</p>
+
+<table>
+	<% @entrees.each do |entree| %>
+		<tr>
+			<td><%== radio_button_tag :entree_id, entree.id %><%= entree.name %><br></td>
+			<td><%= "$%.2f" % entree.price %></td>
+		</tr>
+	<% end %>
+</table>
+
+<p>Chair number (from 1 to <%= @order.table.number_of_chairs %>):<br>
+	<%== text_field_tag "chair_number" %>
+</p>
+<%== submit_tag "Add Entree" %>

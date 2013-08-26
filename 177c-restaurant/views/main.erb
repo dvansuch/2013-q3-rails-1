@@ -10,7 +10,12 @@
 		<tr>
 			<td>Table #<%= table.id %></td>
 			<td><%= table.number_of_chairs %> chairs</td>
-			<td><%== submit_tag "Occupy table #{table.id}" %></td>
+			<% @order = Order.where(table_id: table.id).first %>
+			<% if @order == nil  %>
+				<td><%== submit_tag "Occupy table #{table.id}" %></td>
+			<% else %>
+				<td><a href = "/order/<%= @order.id %>">Occupied</a></td>
+			<% end %>
 		</tr>
 	<% end %>
 </table>
