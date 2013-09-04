@@ -13,10 +13,10 @@ venue1 = Venue.create! venue_name: "Boulder Theatre"
 venue2 = Venue.create! venue_name: "Oregon Convention Center"
 venue3 = Venue.create! venue_name: "St. Julien's Hotel"
 
-conf1 = Conference.create! conf_name: "Rocky Mountain Ruby", venue_id: venue1
-conf2 = Conference.create! conf_name: "Ignite Boulder", venue_id: venue1
-conf3 = Conference.create! conf_name: "Rails Conference", venue_id: venue2
-conf4 = Conference.create! conf_name: "Big Boulder", venue_id: venue3
+conf1 = Conference.create! conf_name: "Rocky Mountain Ruby", venue_id: venue1.id
+conf2 = Conference.create! conf_name: "Ignite Boulder", venue_id: venue1.id
+conf3 = Conference.create! conf_name: "Rails Conference", venue_id: venue2.id
+conf4 = Conference.create! conf_name: "Big Boulder", venue_id: venue3.id
 
 hotel1 = Hotel.create! hotel_name: "Boulderado"
 hotel2 = Hotel.create! hotel_name: "Millenium"
@@ -39,6 +39,6 @@ conf3.hotels << hotel5
 conf3.hotels << hotel6
 conf3.hotels << hotel7
 
-Reservation.create! guest_id: guest1, conf_id: conf1, hotel_id: hotel1, price_paid: "250"
-Reservation.create! guest_id: guest2, conf_id: conf1, hotel_id: hotel1, price_paid: "250"
-Reservation.create! guest_id: guest2, conf_id: conf2, hotel_id: hotel2, price_paid: "10"
+Reservation.create! guest_id: guest1.id, conf_id: conf1.id, hotel_id: hotel1.id, price_paid: "250"
+Reservation.create! guest_id: guest2.id, conf_id: conf1.id, hotel_id: hotel1.id, price_paid: "250"
+Reservation.create! guest_id: guest2.id, conf_id: conf2.id, hotel_id: hotel2.id, price_paid: "10"
