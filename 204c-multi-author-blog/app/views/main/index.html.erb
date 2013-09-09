@@ -1,8 +1,3 @@
-<p>
-  <a href="/new">Write new post</a>
-</p>
-<hr>
-
 <% @blog_posts.each do |post| %>
   <div style='margin-bottom:10px'>
     <div style='margin-left:130px;width:500px'>
@@ -19,7 +14,7 @@
       <%= post.body %>
   
       <div style='float:right;font-weight:bold'>
-        &mdash;<%= post.author_name %>
+        &mdash;<%= post.author_id %>
       </div>
     </div>
     <br style='clear:both'>

@@ -1,0 +1,14 @@
+<%== form_tag "/login" do %>
+
+<div align="center">
+	<h2>Login</h2>
+
+	<div>Username:<div>
+	<div><%== text_field_tag :username %></div>
+	<div>Password:</div>
+	<div><%== password_field_tag :password %></div>
+	<div align="center">
+	<%== submit_tag "Login" %></div>
+</div>
+
+<% end %>
