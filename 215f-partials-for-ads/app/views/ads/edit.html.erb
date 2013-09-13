@@ -1,0 +1,10 @@
+<h1>Editing ad</h1>
+
+<%= render partial: "form", locals: {
+  ad:                 @ad,
+  form_method:        "PUT",
+  submit_button_text: "Update"
+} %>
+
+<%= link_to "Show", @ad %> |
+<%= link_to "Back", ads_path %>
