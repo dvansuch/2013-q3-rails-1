@@ -1,5 +1,14 @@
 class AdminController < ApplicationController
 
+before_filter except: ["login", "logout"] do 
+  if session[:admin_id] != nil
+    @user = Admin.where(id: session[:admin_id]).first
+  else
+    flash[:error] = "You must be logged in to see that page"
+    redirect_to "/admin/login" and return
+  end
+end
+
   def login
     render :login and return
   end

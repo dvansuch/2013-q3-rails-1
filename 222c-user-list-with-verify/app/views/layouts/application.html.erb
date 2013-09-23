@@ -11,6 +11,9 @@
 <% flash.keys.each do |key| %>
   <div class="flash flash-<%= key %>">
     <%= flash[key] %>
+    <%= form_tag send_email_path do %>
+      <%= submit_tag "Resend email" %>
+    <% end %>
   </div>
 <% end %>
 

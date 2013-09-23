@@ -1,5 +1,35 @@
 class AdminController < ApplicationController
 
+before_filter except:["login"] do 
+  if session[:user_id] != nil
+    @user = Admin.where(id: session[:user_id]).first
+  else
+    flash[:error] = "You must be logged in to see that page"
+    redirect_to "/login" and return
+end
+
+  def login
+    @users = Admin.all
+    render :login and return
+  end
+
+  def login_post
+    @user  = Admin.where(username: params[:username]).first
+
+    if params[:username] = @user
+      if @user.authenticate(params[:password]) != false
+        session[:session_id] = user.id
+        redirect_to "/admin/houses" and return
+      else
+        flash[:error] = "Wrong password"
+        render :login and return
+      end
+    else 
+      flash[:error] = "Wrong username"
+      render :login and return
+    end
+  end
+    
   def index
     @houses = House.order(:id)
     render :index and return

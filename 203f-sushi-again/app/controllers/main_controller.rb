@@ -31,4 +31,14 @@ class MainController < ApplicationController
   
     redirect_to "/place_order" and return
   end
+
+  def orders
+    @orders = Order.order(:id).all
+    render :orders and return
+  end
+
+  def dishes
+    @dishes = Dish.order(:id).all
+    render :dishes and return
+  end
 end

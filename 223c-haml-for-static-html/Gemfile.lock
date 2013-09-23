@@ -47,6 +47,8 @@ GEM
     debugger-ruby_core_source (1.2.3)
     dynamic_form (1.1.4)
     erubis (2.7.0)
+    haml (4.0.3)
+      tilt
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -115,6 +117,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   dynamic_form
   erubis
+  haml
   pry-debugger
   pry-doc
   rack-flash3

@@ -1,59 +1,59 @@
 class AdsController < ApplicationController
 
   def root
-    redirect_to "/list_ads" and return
+    redirect_to "/ads" and return
   end
 
-  def list_ads
+  def ads
     @ads = Ad.all
     render :index and return
   end
 
-  def show_ad
+  def show
     @ad = Ad.find(params[:id])
     render :show and return
   end
 
-  def new_ad
+  def new
     @ad = Ad.new
     render :new and return
   end
 
-  def edit_ad
+  def edit
     @ad = Ad.find(params[:id])
     render :edit and return
   end
 
-  def new_ad_post
+  def new_post
     @ad              = Ad.new
     @ad.company_name = params[:company_name]
     @ad.duration     = params[:duration]
 
     if @ad.save == true
       flash[:notice] = "Ad was successfully created."
-      redirect_to "/show_ad/#{@ad.id}"
+      redirect_to "/ads/#{@ad.id}"
     else
       render :new and return
     end
   end
 
-  def edit_ad_post
+  def edit_post
     @ad              = Ad.find(params[:id])
     @ad.company_name = params[:company_name]
     @ad.duration     = params[:duration]
 
     if @ad.save == true
       flash[:notice] = "Ad was successfully updated."
-      redirect_to "/show_ad/#{@ad.id}"
+      redirect_to "/ads/#{@ad.id}"
     else
       render :edit and return
     end
   end
 
-  def destroy_ad
+  def destroy
     @ad = Ad.find(params[:id])
     @ad.destroy
-    redirect_to "/list_ads" and return
+    redirect_to "/ads" and return
   end
 
 end

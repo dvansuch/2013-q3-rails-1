@@ -9,35 +9,27 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended that you check this file into your version control system.
+# It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130904020227) do
+ActiveRecord::Schema.define(:version => 20130816000126) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "admins", force: true do |t|
-    t.string "username"
-    t.string "password_digest"
-  end
-
-  create_table "dishes", force: true do |t|
+  create_table "dishes", :force => true do |t|
     t.string  "name"
     t.decimal "price"
   end
 
-  create_table "line_items", force: true do |t|
+  create_table "line_items", :force => true do |t|
     t.integer "dish_id"
     t.integer "order_id"
     t.integer "quantity"
     t.decimal "line_price"
   end
 
-  create_table "orders", force: true do |t|
+  create_table "orders", :force => true do |t|
     t.integer  "table_number"
     t.decimal  "total_price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

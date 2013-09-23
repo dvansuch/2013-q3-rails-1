@@ -2,7 +2,7 @@
 
 <%== error_messages_for @ad %>
 
-<%== form_tag ads_path do %>
+<%== form_tag @ad do %>
   <div class="field">
     <%= label_tag :company_name %><br>
     <%= text_field_tag :company_name, @ad.company_name %>

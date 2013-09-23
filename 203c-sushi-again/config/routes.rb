@@ -1,4 +1,13 @@
 App::Application.routes.draw do
+  get "/"             => "main#place_order"
+  get "/place_order"  => "main#place_order"
+  post "/place_order" => "main#place_order_post"
+
+  get "/login"        => "admin#login"
+  get "/login"        => "admin#login_post"
+
+  get "/admin/orders" => "admin#orders"
+  get "/admin/dishes" => "admin#dishes"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

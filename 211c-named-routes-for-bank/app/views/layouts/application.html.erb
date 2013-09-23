@@ -15,9 +15,9 @@
 <% end %>
 
 <% if @user != nil %>
-  <a href="/accounts">accounts</a>
-  <a href="/location">location</a>
-  <a href="/rates">rates</a>
+  <%= link_to "accounts", accounts_path %>
+  <%= link_to "locations", locations_path %>
+  <%= link_to "rates", rates_path %>
   <br>
 
   Logged in as <%= @user.username %>;

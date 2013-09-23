@@ -12,6 +12,3 @@ order.line_items << LineItem.create(dish_id: 5, quantity: 1, line_price:  4.50)
 
 order = Order.create(table_number: 7, total_price: 13.50)
 order.line_items << LineItem.create(dish_id: 5, quantity: 3, line_price: 13.50)
-
-Admin.create! username: "bob", password: "123", password_confirmation: "123"
-Admin.create! username: "sue", password: "234", password_confirmation: "234"
