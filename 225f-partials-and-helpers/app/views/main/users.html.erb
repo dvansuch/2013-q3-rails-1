@@ -1,0 +1,29 @@
+<h2>Administrators</h2>
+<ul>
+  <% User.where(is_admin: true).all.each do |user| %>
+    <li><%= full_name(user) %></li>
+  <% end %>
+</ul>
+
+<h2>Non-administrators</h2>
+<ul>
+  <% User.where(is_admin: false).all.each do |user| %>
+    <li><%= full_name(user) %></li>
+  <% end %>
+</ul>
+
+<h2>Age of each user</h2>
+<ul>
+  <% User.all.each do |user| %>
+    <li>
+      <%= full_name(user) %> is
+
+      <%= red_if_too_young(calculate_age_of(user)) %>
+
+      years old
+
+      (from <%= format_date(user.birth_date) %> to
+      <%= format_date(Date.new(2013, 9, 21)) %>)
+    </li>
+  <% end %>
+</ul>

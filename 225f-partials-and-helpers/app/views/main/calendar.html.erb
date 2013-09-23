@@ -1,0 +1,9 @@
+<% @from_date.step(@to_date, 7) do |beginning_of_week| %>
+  <% ending_of_week = beginning_of_week.advance(days: 6) %>
+  <% beginning_of_week.step(ending_of_week, 1) do |date| %>
+    <% if date <= @to_date %>
+      <%= render partial: "day", locals: { date: date } %>
+    <% end %>
+  <% end %>
+  <br clear='all'>
+<% end %>

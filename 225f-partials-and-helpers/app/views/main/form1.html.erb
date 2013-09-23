@@ -1,0 +1,20 @@
+<form>
+  <%= text_field_group   :first_name %>
+  <%= text_field_group   :email %>
+  <%= text_area_group    :description %>
+
+  <%= render partial: "radio_button_group", locals: {
+    field: :gender, values: [:male, :female] } %>
+
+  <%= select_group :class_year, ["2012", "2013", "Other"], "Choose year" %>
+
+  <div class='form-group'>
+    <label>Marketing</label>
+    <%= labeled_check_box :marketing_us, "Please email me relevant marketing offers" %>
+    <%= labeled_check_box :marketing_3rd_party,
+          "Please email me relevant marketing offers from third parties" %>
+  </div>
+
+  <%= big_submit_button %>
+
+</form>
